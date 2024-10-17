@@ -30,6 +30,6 @@ int main(){
         printf("Number found at position %d and at index %d\n",position,index);
     }
     else{
-        printf("Not found the given number!\n");
+        printf("Not found the given number!\n") ;
     }
 }
