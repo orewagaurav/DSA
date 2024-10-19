@@ -19,7 +19,7 @@ int main(){
             index=mid;
             break;
         }
-        else if(arr[mid]<k){
+        else if(arr[mid]<k) {
             i = mid+1;
         }
         else if(arr[mid]>k){
