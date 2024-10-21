@@ -25,6 +25,16 @@ void insert(int co,int po){
     ptr->coef=co;
     ptr->power=po;
     ptr->next=NULL;
-    if(head==NULL)
+    if(head==NULL || po > head->power){
+    ptr->next=head->next;//check
     head=ptr;
+    }
+    else{
+        tmp=head;
+        while(tmp->next!=NULL && tmp->next->power >po){
+            tmp=tmp->next;
+        }
+        ptr->next=tmp->next;
+        tmp->next=ptr;
+    }
 }
