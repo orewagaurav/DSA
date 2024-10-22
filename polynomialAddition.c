@@ -112,7 +112,7 @@ int main() {
     // Add the two polynomials
     struct node* result = addPolynomials(poly1, poly2);
 
-    // Display the resultant polynomial
+    // Display the resultant polynomial 
     printf("Sum of Polynomials: ");
     displayPoly(result);
 
