@@ -100,7 +100,7 @@ void display3(){
     else{
         while(tmp!=NULL){
             tmp->coef=tmp->coef+tmp1->coef;
-            //tmp->power=tmp->power+tmp1->power;
+            tmp->power=tmp->power+tmp1->power;
             tmp=tmp->next;
             tmp1=tmp1->next;
         }
@@ -108,6 +108,7 @@ void display3(){
 }
 void display4(){
     struct node *tmp;
+
     tmp=head;
     if(tmp==NULL)
     return;
