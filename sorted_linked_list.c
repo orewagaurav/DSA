@@ -26,7 +26,7 @@ void insert(int co,int po){
     ptr->power=po;
     ptr->next=NULL;
     if(head==NULL || po > head->power){
-    ptr->next=head->next;//check
+    ptr->next=head;//check
     head=ptr;
     }
     else{
@@ -37,4 +37,34 @@ void insert(int co,int po){
         ptr->next=tmp->next;
         tmp->next=ptr;
     }
+}
+void display(){
+    struct node *tmp;
+    tmp =head;
+    if(tmp==NULL)
+    return;
+    else{
+        while(tmp->next!=NULL){
+            printf("%dx^%d + ",tmp->coef,tmp->power);
+            tmp=tmp->next;
+        }
+        printf("%dx^%d\n",tmp->coef,tmp->power);
+    }
+}
+int main(){
+    int n,k;
+    int po,co;
+    printf("Enter the no. of elem: ");
+    scanf("%d",&n);
+    for(int i=0;i<n;i++){
+        scanf("%d %d",&co,&po);
+        insert(co,po);
+    }
+    printf("Enter no. of ele in 2nd poly: ");
+    scanf("%d",&k);
+    for(int i=0;i<k;i++){
+        scanf("%d %d",&co,&po);
+        insert(co,po);
+    }
+    display();
 }
