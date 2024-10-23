@@ -65,7 +65,7 @@ struct node* addPolynomials(struct node* poly1, struct node* poly2) {
             poly2 = poly2->next;
         }
     }
-    while (poly1 != NULL) {
+    while (poly1 != NULL){
         insertNode(&result, poly1->coeff, poly1->exp);
         poly1 = poly1->next;
     }
