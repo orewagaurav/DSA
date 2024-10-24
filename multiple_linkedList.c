@@ -5,7 +5,6 @@
 struct node {
     int data;
     struct node* next;
-    int new;
 };
 
 // Function to create a new node
