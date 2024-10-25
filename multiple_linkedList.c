@@ -76,6 +76,7 @@ int main() {
             current = next;
         }
     }
+    
     free(heads);
 
     return 0;
