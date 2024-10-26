@@ -33,10 +33,10 @@ void insertNode(struct node** head, int data) {
 void displayList(struct node* head) {
     struct node* temp = head;
     while (temp != NULL) {
-        printf("%d -> ", temp->data);
+        printf("%d ", temp->data);
         temp = temp->next;
     }
-    printf("NULL\n");
+    printf("\n");
 }
 
 int main() {
