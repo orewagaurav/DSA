@@ -1,84 +1,52 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-// Node structure for linked list
-struct node {
+struct node{
     int data;
-    struct node* next;
+    struct node *next;
 };
-
-// Function to create a new node
-struct node* createNode(int data) {
-    struct node* newNode = (struct node*)malloc(sizeof(struct node));
-    newNode->data = data;
-    newNode->next = NULL;
-    return newNode;
-}
-
-// Function to insert a node at the end of the linked list
-void insertNode(struct node** head, int data) {
-    struct node* newNode = createNode(data);
-    if (*head == NULL) {
-        *head = newNode;
-    } else {
-        struct node* temp = *head;
-        while (temp->next != NULL) {
-            temp = temp->next;
+void create(struct  node **head,int value){
+    struct node *ptr=malloc(sizeof(struct node));
+    ptr->next=NULL;
+    ptr->data=value;
+    struct node *tmp;
+    if(*head==NULL)
+    *head=ptr;
+    else{
+        tmp = *head;
+        while(tmp->next!=NULL){
+        tmp= tmp->next;
         }
-        temp->next = newNode;
+        tmp->next=ptr;
     }
+    
 }
-
-// Function to display the linked list
-void displayList(struct node* head) {
-    struct node* temp = head;
-    while (temp != NULL) {
-        printf("%d ", temp->data);
-        temp = temp->next;
+void display(struct node *head){
+    struct node *tmp = head;
+    while(tmp!=NULL){
+        printf("%d ",tmp->data);
+        tmp=tmp->next;
     }
     printf("\n");
 }
-
-int main() {
-    int n, m, data;
-
-    printf("Enter the number of linked lists: ");
-    scanf("%d", &n);
-
-    struct node** heads = (struct node**)malloc(n * sizeof(struct node*));
-    for (int i = 0; i < n; i++) {
-        heads[i] = NULL;
+int main(){
+    int n,m,value;
+    printf("Enter the no. of linked list: ");
+    scanf("%d",&n);
+    struct node **head=(struct node**)malloc(n*sizeof(struct node*));
+    for(int i=0;i<n;i++){
+        head[i]=NULL;
     }
-
-    for (int i = 0; i < n; i++) {
-        printf("Enter the number of elements in linked list %d: ", i + 1);
-        scanf("%d", &m);
-        printf("Enter the elements:\n");
-        for (int j = 0; j < m; j++) {
-            scanf("%d", &data);
-            insertNode(&heads[i], data);
+    for(int i=0;i<n;i++){
+        printf("Enter the no. of elements in Llist %d: ",i+1);
+        scanf("%d",&m);
+        printf("Enter the elements of linkedList %d: ",i+1);
+        for(int j=0;j<m;j++){
+            scanf("%d",&value);
+            create(&head[i],value);
         }
     }
-
-    printf("Displaying all linked lists:\n");
-    for (int i = 0; i < n; i++) {
-        printf("Linked List %d: ", i + 1);
-        displayList(heads[i]);
+    for(int i =0;i<n;i++){
+        printf("LinkedList %d: ",i+1);
+        display(head[i]);
     }
-
-    // Free memory
-    for (int i = 0; i < n; i++) {
-        struct node* current = heads[i];
-        struct node* next;
-        while (current != NULL) {
-            next = current->next;
-            free(current);
-            current = next;
-        }
-    }
-    
-    free(heads);
-
-    return 0;
 }
-
