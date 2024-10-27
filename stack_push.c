@@ -3,6 +3,7 @@
 #define MAX 100
 int SArr[MAX];
 int top = -1;
+int pval=0;
 void push(int value){
     if(top==MAX-1)
     return;
@@ -20,7 +21,7 @@ void peek(){
     if(top==-1)
     return;
     else 
-    printf("%d",SArr[top]);
+    pval=SArr[top];
 }
 
 void display(){
@@ -35,7 +36,7 @@ void display(){
 }
 
 int main(){
-    int n,task,value;
+    int n,task,value,k,flag=0;
     scanf("%d",&n);
     for(int i=0;i<n;i++){
         scanf("%d",&task);
@@ -46,7 +47,13 @@ int main(){
         else if(task==2)
         pop();
         else if(task==3)
+        if(top!=-1){
         peek();
+        flag++;
+        }
+    }
+    if(flag>0){
+        printf("%d\n",pval);
     }
     display();
 }
