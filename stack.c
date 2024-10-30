@@ -1,35 +1,60 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX 1000
+#define MAX 5
 int stack[MAX];
 int top = -1;
 void push(int value){
     if(top==MAX-1){
         printf("Overflow");
     }
-    top++;
-    stack[top]=value;
+    else{
+        top++;
+        stack[top]=value;
+    }
 
 }
 void pop(){
     if(top==-1)
-    printf("Underflow");
+    printf("UNDERFLOW");
+    else{
     top--;
+    }
+}
+void isEmpty(){
+    if(top==-1){
+        printf("True\n");
+    }
+    else{
+        printf("False\n");
+    }
+}
+void isFull(){
+    if(top==MAX-1){
+        printf("True\n");
+    }
+    else{
+        printf("False\n");
+    }
 }
 void display(){
-    printf("\nThe elements in stack are: ");
-    for(int i=top;i>=0;i--){
-        printf("%d ",stack[i]);
+    if(top==-1){
+        printf("NO Elements");
     }
-    printf("\n");
+    else{
+        printf("\nThe elements in stack are: ");
+            for(int i=top;i>=0;i--){
+                printf("%d ",stack[i]);
+            }
+        printf("\n");
+    }
 }
 int main(){
     while(1){
-        int choice;
-        printf("Enter your choice: \n1-push\n2-pop\n3-display\n4-Exit\n5-isEmpty\n6-isFull\n\n");
-        scanf("%d",&choice);
-        switch(choice){
-            case 1:
+        int n;
+        printf("\n1-push\n2-pop\n3-display\n4-Exit\n5-isEmpty\n6-isFull\n\n");
+        printf("Enter your choice: ");
+        scanf("%d",&n);
+        if(n==1){
             printf("Enter the element: ");
             for(int i=0;;i++){
                 int value;
@@ -39,15 +64,24 @@ int main(){
                 if(ch=='\n')
                 break; 
             }
-            case 2:
+        }
+        else if(n==2){
             pop();
-            break;
-            case 3:
+        }
+        else if(n==3){
             display();
-            break;
-            case 4:
-            break;
-
+        }
+        else if(n==4){
+        break;
+        }
+        else if(n==5){
+            isEmpty();
+        }
+        else if(n==6){
+            isFull();
+        }
+        else{
+            printf("Enter the correct choice: ");
         }
     }  
 }
