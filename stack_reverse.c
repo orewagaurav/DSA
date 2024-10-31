@@ -15,7 +15,7 @@ void push(int value){
 void display(){
 	struct node* tmp;
 	if(top==NULL)
-	printf("stacjgdjk is empty\n");
+	printf("stack is empty\n");
 	tmp=top;
 	while(tmp->next!=NULL){
 		printf("%d ",tmp->data);
