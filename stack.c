@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #define MAX 1000
 int stack[MAX];
 int top = -1;
@@ -49,7 +50,7 @@ void display(){
     }
 }
 int main(){
-    while(1){
+    while(true){
         int n;
         printf("\n1-push\n2-pop\n3-display\n4-Exit\n5-isEmpty\n6-isFull\n\n");
         printf("Enter your choice: ");
