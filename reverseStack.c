@@ -83,6 +83,5 @@ int main() {
 
     // Display the reversed stack
     display();
-
     return 0;
 }
