@@ -29,21 +29,47 @@ void deQueue(){
     printf("stack is Empty!\n");
 }
 void display(){
-    for(int i = frontInd+1;i<=backInd;i++){
-        printf("%d ",arr[i]);
+    if(backInd==frontInd){
+        printf("stack is Empty!\n");
     }
-    printf("\n");
+    else{
+        for(int i = frontInd+1;i<=backInd;i++){
+            printf("%d ",arr[i]);
+        }
+        printf("\n");
+    }
 }
 
 int main(){
-    int n,value;
-    printf("Enter the no. of elements: ");
+    int n,task,value;
+    printf("Enter the no. of operations: ");
     scanf("%d",&n);
-    printf("Enter the elements: ");
     for(int i=0;i<n;i++){
-        scanf("%d",&value);
-        enQueue(value);
+        scanf("%d",&task);
+        if(task==1){
+            scanf("%d",&value);
+            enQueue(value); 
+        }
+        else if(task ==2)
+        deQueue();
+        
     }
-    deQueue();
     display();
 }
+// 6
+
+// 1 2
+
+// 1 3
+
+// 1 4
+
+// 2
+
+// 2
+
+// 1 5
+
+// Output:
+
+// 4 5
