@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
-#define MAX 1000
+#define MAX 10
 int arr[MAX];
 int backInd = -1;
 int frontInd = -1;
