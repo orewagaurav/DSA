@@ -80,7 +80,7 @@ int main() {
     if (c == n)
         printf("THE ABOVE SEQUENCE IS A SAFE SEQUENCE\n");
     else
-        printf("DEADLOCK OCCURRED\n");
+        printf("DEADLOCK OCCURRED samjhaaa \n");
 
     return 0;
     
