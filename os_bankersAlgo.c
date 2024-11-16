@@ -1,88 +1,83 @@
 #include <stdio.h>
-struct da {
-    int max[10], a1[10], need[10], before[10], after[10];
-} p[10];
+
+// Function to print the frames
+void print_frames(int frames[], int no_of_frames) {
+    for (int i = 0; i < no_of_frames; i++) {
+        if (frames[i] == -1)
+            printf("-1");
+        else
+            printf("%d", frames[i]);
+        
+        if (i < no_of_frames - 1) 
+            printf(" ");
+    }
+    printf("\n");
+}
 
 int main() {
-    int n, r, tot[10], av[10], c = 0, temp = 0;
-    printf("ENTER THE NO. OF PROCESSES: ");
-    scanf("%d", &n);
-    printf("ENTER THE NO. OF RESOURCES: ");
-    scanf("%d", &r);
+    int no_of_frames, no_of_references;
 
-    for (int i = 0; i < n; i++) {
-        printf("PROCESS %d\n", i + 1);
-        for (int j = 0; j < r; j++) {
-            printf("MAXIMUM VALUE FOR RESOURCE %d: ", j + 1);
-            scanf("%d", &p[i].max[j]);
-        }
-        for (int j = 0; j < r; j++) {
-            printf("ALLOCATED FROM RESOURCE %d: ", j + 1);
-            scanf("%d", &p[i].a1[j]);
-            p[i].need[j] = p[i].max[j] - p[i].a1[j];
-        }
+    printf("FIFO PAGE REPLACEMENT ALGORITHM\n");
+
+    // Input: number of frames
+    printf("Enter number of frames: ");
+    scanf("%d", &no_of_frames);
+
+    // Input: length of reference string
+    printf("Enter number of references: ");
+    scanf("%d", &no_of_references);
+
+    // Input: reference string
+    int reference_string[no_of_references];
+    printf("Enter the reference string: ");
+    for (int i = 0; i < no_of_references; i++) {
+        scanf("%d", &reference_string[i]);
     }
 
-    for (int i = 0; i < r; i++) {
-        printf("ENTER TOTAL VALUE OF RESOURCE %d: ", i + 1);
-        scanf("%d", &tot[i]);
-    }
-    for (int i = 0; i < r; i++) {
-        for (int j = 0; j < n; j++) {
-            temp += p[j].a1[i];
-        }
-        av[i] = tot[i] - temp;
-        temp = 0;
+    // Initialize frames and variables
+    int frames[no_of_frames];
+    for (int i = 0; i < no_of_frames; i++) {
+        frames[i] = -1;  // Initialize all frames to -1
     }
 
-    printf("RESOURCES  ALLOCATED  NEEDED  TOTAL  AVAIL\n");
-    for (int i = 0; i < n; i++) {
-        printf("P%d\t", i + 1);
-        for (int j = 0; j < r; j++) printf("%d ", p[i].max[j]);
-        printf("\t");
-        for (int j = 0; j < r; j++) printf("%d ", p[i].a1[j]);
-        printf("\t");
-        for (int j = 0; j < r; j++) printf("%d ", p[i].need[j]);
-        if (i == 0) {
-            printf("\t");
-            for (int j = 0; j < r; j++) printf("%d ", tot[j]);
-            printf("\t");
-            for (int j = 0; j < r; j++) printf("%d ", av[j]);
-        }
-        printf("\n");
-    }
+    int page_faults = 0, index = 0;
 
-    printf("\tAVAIL  BEFORE  AVAIL  AFTER\n");
-    for (int l = 0; l < n; l++) {
-        for (int i = 0; i < n; i++) {
-            int cn = 0, cz = 0;
-            for (int j = 0; j < r; j++) {
-                if (p[i].need[j] > av[j]) cn++;
-                if (p[i].max[j] == 0) cz++;
-            }
-            if (cn == 0 && cz != r) {
-                for (int j = 0; j < r; j++) {
-                    p[i].before[j] = av[j] - p[i].need[j];
-                    p[i].after[j] = p[i].before[j] + p[i].max[j];
-                    av[j] = p[i].after[j];
-                    p[i].max[j] = 0;
-                }
-                printf("P%d\t", i + 1);
-                for (int j = 0; j < r; j++) printf("%d ", p[i].before[j]);
-                printf("\t");
-                for (int j = 0; j < r; j++) printf("%d ", p[i].after[j]);
-                printf("\n");
-                c++;
+    // Display the reference string
+    printf("The given reference string: ");
+    for (int i = 0; i < no_of_references; i++) {
+        printf("%d", reference_string[i]);
+        if (i < no_of_references - 1) {
+            printf(" ");
+        }
+    }
+    printf("\n");
+
+    // FIFO page replacement process
+    for (int i = 0; i < no_of_references; i++) {
+        int found = 0;
+
+        // Check if the current reference is already in a frame
+        for (int j = 0; j < no_of_frames; j++) {
+            if (frames[j] == reference_string[i]) {
+                found = 1;
                 break;
             }
         }
+
+        // If not found, it's a page fault
+        if (!found) {
+            frames[index] = reference_string[i];
+            index = (index + 1) % no_of_frames;  // FIFO replacement
+            page_faults++;
+        }
+
+        // Print the state of frames after every reference
+        printf("Reference %d -> ", reference_string[i]);
+        print_frames(frames, no_of_frames);
     }
-    if (c == n)
-        printf("THE ABOVE SEQUENCE IS A SAFE SEQUENCE\n");
-    else
-        printf("DEADLOCK OCCURRED samjhaaa \n");
+
+    // Output the total number of page faults
+    printf("Number of page faults: %d\n", page_faults);
 
     return 0;
-    
-    
 }
