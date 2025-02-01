@@ -15,6 +15,7 @@ struct Node* createNode(int data) {
     newNode->left = NULL;
     newNode->right = NULL;
     return newNode;
+    
 }
 
 // Function to insert a node in the binary tree
