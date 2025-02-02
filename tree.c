@@ -71,4 +71,22 @@ struct node* createNode(int data){
     ptr->data=data;
     ptr->left=NULL;
     ptr->right=NULL;
+    return ptr;
+}
+int main(){
+    int p1,p2,p3;
+    printf("Enter the p1 value: ");
+    scanf("%d",&p1);
+    struct node* n1=createNode(p1);
+    printf("Enter the p1 value: ");
+    scanf("%d",&p2);
+    struct node* n2=createNode(p2);
+    printf("Enter the p1 value: ");
+    scanf("%d",&p3);
+    struct node* n3=createNode(p3);
+    n1->left=n2;
+    n1->right=n3;
+
+    return 0;
+
 }
