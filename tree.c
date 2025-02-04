@@ -73,6 +73,7 @@ struct node* createNode(int data){
     ptr->right=NULL;
     return ptr;
 }
+
 int main(){
     int p1,p2,p3;
     printf("Enter the p1 value: ");
