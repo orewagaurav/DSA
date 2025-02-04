@@ -13,6 +13,13 @@ struct node *createNode(int data){
     newNode->right=NULL;
     return newNode;
 }
+// void preOrder(struct node *root){
+//     if(root !=NULL){
+//         printf("%d ",root->data);
+//         preOrder(root->left);
+//         preOrder(root->right);
+//     }
+// }
 void postOrder(struct node *root){
     if(root!=NULL){
         postOrder(root->left);
@@ -34,10 +41,18 @@ int main(){
     //  / \
     // 5   2
 
+//preorder-4 1 5 2 6
+//postorder-5 2 1 6 4
+//Inorder-5 1 2 4 6
+
     root->left=p2;
     root->right=p3;
     p2->left=p4;
     p2->right=p5;
+
+    // preOrder(root);
+    // printf("\n");
+
     postOrder(root);
     printf("\n");
 
