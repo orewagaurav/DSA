@@ -34,5 +34,6 @@ int main(){
     p2->right=p5;
 
     preOrder(root);
+    printf("\n");
 
 }
