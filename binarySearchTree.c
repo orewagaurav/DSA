@@ -15,18 +15,32 @@ struct node* createNode(int data){
     newNode->right=NULL;
     return newNode;
 }
-void preOrder(struct node *root){
+
+int isBST(struct node *root){
+     static struct node *prev=NULL;
     if(root!=NULL){
-        printf("%d ",root->data);
-        preOrder(root->left);
-        preOrder(root->right);
+        if(!isBST(root->left)){
+            return 0;
+        }
+        if(prev!=NULL && root->data <= prev->data){
+            return 0;
+        }
+        prev=root;
+        return isBST(root->right);
+    }
+    else{
+        return 1;
     }
 }
-//       5
-//     /  \
-//     3   6
-//    /  \  
-//   1   4
+
+/* 
+      5
+    /  \
+    3   6
+   /  \  
+  1   4
+
+*/
 
 int main(){
     struct node *p1,*p2,*p3,*p4,*p5;
@@ -41,8 +55,12 @@ int main(){
     p1->right=p3;
     p2->left=p4;
     p2->right=p5;
-    printf("Hello world\n");
+    printf("If the tree is binary search tree then inorder traversal will be sorted\n");
     
-    preOrder(p1);
-    printf("\n");
+    if(isBST(p1)==1){
+        printf("Yes,This is BST\n");
+    }
+    else{
+        printf("NO\n");
+    }
 }
