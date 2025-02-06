@@ -40,6 +40,7 @@ int isBst(struct node *root){
     }
 }
 
+//recursive method
 struct node* bstSearch(struct node *root,int key){
     if(root==NULL){
         return NULL;
@@ -52,6 +53,21 @@ struct node* bstSearch(struct node *root,int key){
     }
     else
     return bstSearch(root->right,key);
+}
+// iterator method
+struct node* bstSearchItr(struct node *root,int key){
+    while(root!=NULL){
+        if(root->data==key){
+            return root;
+        }
+        if(root->data > key){
+            return root->left;
+        }
+        else{
+            return root->right;
+        }
+    }
+    return NULL;
 }
 int main(){
     struct node *p1,*p2,*p3,*p4,*p5;
@@ -79,14 +95,14 @@ int main(){
     int key;
     printf("Enter the element to search: ");
     scanf("%d",&key);
-    tmp=bstSearch(p1,key);
+
+    // tmp=bstSearch(p1,key);
+    tmp=bstSearchItr(p1,key);
+    
     if(tmp!=NULL){
         printf("Fond %d in this BST\n",tmp->data);
     }
     else{
         printf("Element not found !\n");
     }
-
-
-
 }
