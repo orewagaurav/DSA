@@ -75,12 +75,12 @@ int main(){
     else
     printf("No\n");
     struct node *tmp;
-    tmp=bstSearch(p1,3);
+    tmp=bstSearch(p1,10);
     if(tmp!=NULL){
-        printf("fond: %d\n",tmp->data);
+        printf("Fond: %d\n",tmp->data);
     }
     else{
-        printf("Element not found\n");
+        printf("Element not found !\n");
     }
 
 
