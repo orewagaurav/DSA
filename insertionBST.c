@@ -40,28 +40,26 @@ int isBst(struct node *root){
     }
 }
 
-// iterator method
-struct node* bstSearchItr(struct node *root,int key){
-    while(root!=NULL){
-        if(root->data==key){
+struct node* bstSearchItr(struct node *root, int key) {
+    while (root != NULL) {
+        if (root->data == key)
             return root;
-        }
-        if(root->data > key){
-            return root->left;
-        }
-        else{
-            return root->right;
-        }
+        else if (key < root->data)
+            root = root->left;
+        else
+            root = root->right;
     }
     return NULL;
 }
+
+
 void insert(struct node *root,int key){
     struct node *prev =NULL;
     while(root!=NULL){
         prev=root;
         if(root->data==key){
             printf("Key allready exists so can't be inserted.\n");
-            break;
+            return;
         }
         else if(root->data>key){
             root=root->left;
