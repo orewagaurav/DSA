@@ -67,17 +67,21 @@ int main(){
     p2->left=p4;
     p2->right=p5;
 
+    printf("Inorder: ");
     inOrder(p1);
     printf("\n");
     if(isBst(p1)){
-        printf("Yes\n");
+        printf("Yes,It's a BST !\n");
     }
     else
-    printf("No\n");
+    printf("No,It's not a BST !\n");
     struct node *tmp;
-    tmp=bstSearch(p1,10);
+    int key;
+    printf("Enter the element to search: ");
+    scanf("%d",&key);
+    tmp=bstSearch(p1,key);
     if(tmp!=NULL){
-        printf("Fond: %d\n",tmp->data);
+        printf("Fond %d in this BST\n",tmp->data);
     }
     else{
         printf("Element not found !\n");
