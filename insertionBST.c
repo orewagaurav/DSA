@@ -94,50 +94,48 @@ int main(){
     p2->left=p4;
     p2->right=p5;
     
-    printf("Before Insertion: \n");
-    printf("Inorder: ");
+    printf("\nBefore Insertion: \n");
+    printf("  Inorder: ");
     inOrder(p1);
     printf("\n");
     if(isBst(p1)){
-        printf("Yes,It's a BST !\n");
+        printf("  Yes,It's a BST !\n");
     }
     else
-    printf("No,It's not a BST !\n");
+    printf("  No,It's not a BST !\n");
     struct node *tmp;
     int key;
-    printf("Enter the element to search: ");
+    printf("  Enter the element to search: ");
     scanf("%d",&key);
     tmp=bstSearchItr(p1,key);
     
     if(tmp!=NULL){
-        printf("Fond %d in this BST\n",tmp->data);
+        printf("  Fond %d in this BST\n",tmp->data);
     }
     else{
-        printf("Element not found !\n");
+        printf("  Element not found !\n");
     }
 
     printf("\nEnter the key to insert: ");
     scanf("%d",&key2);
     insert(p1,key2);
-
-    printf("Inorder: ");
+    printf("\nAfter Insertion: \n");
+    printf("  Inorder: ");
     inOrder(p1);
     printf("\n");
     if(isBst(p1)){
-        printf("Yes,It's a BST !\n");
+        printf("  Yes,It's a BST !\n");
     }
     else
-    printf("No,It's not a BST !\n");
-    printf("Enter the element to search: ");
+    printf("  No,It's not a BST !\n");
+    printf("  Enter the element to search: ");
     scanf("%d",&key);
     tmp=bstSearchItr(p1,key);
     
     if(tmp!=NULL){
-        printf("Fond %d in this BST\n",tmp->data);
+        printf("  Fond %d in this BST\n",tmp->data);
     }
     else{
-        printf("Element not found !\n");
+        printf("  Element not found !\n");
     }
-
-
 }
