@@ -50,6 +50,38 @@ void inOrder(struct node *root){
     }
 }
 
+
+struct node* inOrderPredecessor(struct node *root){
+    root=root->left;
+    while(root->right != NULL){
+        root=root->right;
+    }
+    return root;
+}
+
+struct node* deleteNode(struct node *root,int value){
+    struct node *pre;
+    if(root==NULL){
+        return NULL;
+    }
+    if(root->left==NULL && root->right==NULL){
+        free(root);
+        return NULL;
+    }
+    if(value < root->data){
+        root->left=deleteNode(root->left,value);
+    }
+    else if(value >root->data){
+        root->right=deleteNode(root->right,value);
+    }
+    else{
+        pre =inOrderPredecessor(root);
+        root->data=pre->data;
+        deleteNode(root->left,pre->data);
+    }
+    return root;
+}
+
 int main(){
     struct node *p1,*p2,*p3,*p4,*p5;
     p1 = createNode(5);
@@ -69,6 +101,16 @@ int main(){
 
     inOrder(p1);
 
+    printf("\n");
+    if(isBST(p1)==1){
+        printf("Yes,This is BST\n");
+    }
+    else{
+        printf("NO\n");
+    }
+    deleteNode(p1,10);
+
+    inOrder(p1);
     printf("\n");
     if(isBST(p1)==1){
         printf("Yes,This is BST\n");
