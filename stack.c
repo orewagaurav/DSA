@@ -81,6 +81,7 @@ int main(){
         else if(n==6){
             isFull();
         }
+        
         else{
             printf("Enter the correct choice: ");
         }
