@@ -19,6 +19,7 @@ bool isPalindrome(int x){
     }
 }
 int main(){
+    printf("h");
     if(isPalindrome(-121)){
         printf("Yes\n");
     }
