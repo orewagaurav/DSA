@@ -28,6 +28,5 @@ int main(){
     struct node* n3=createNode(p3);
     n1->left=n2;
     n1->right=n3;
-
     return 0;
 }
