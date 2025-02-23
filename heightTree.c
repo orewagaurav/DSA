@@ -1,14 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Definition of a Tree Node
 struct TreeNode {
     int data;
     struct TreeNode* left;
     struct TreeNode* right;
 };
 
-// Function to create a new node
 struct TreeNode* newNode(int data) {
     struct TreeNode* node = (struct TreeNode*)malloc(sizeof(struct TreeNode));
     node->data = data;
@@ -16,14 +14,18 @@ struct TreeNode* newNode(int data) {
     return node;
 }
 
-// Function to calculate the height of a binary tree
-int height(struct TreeNode* root) {
-    if (root == NULL)
-        return -1; // Return 0 if height is measured in nodes instead of edges
-    int leftHeight = height(root->left);
-    int rightHeight = height(root->right);
-    return 1 + (leftHeight > rightHeight ? leftHeight : rightHeight);
+int height(struct TreeNode* root){
+    int leftH,rightH;
+    if(root==NULL)
+        return 0;
+    leftH=height(root->left);
+    rightH=height(root->right);
+    if(leftH>rightH)
+        return leftH+1;
+    else
+        return rightH+1;
 }
+
 
 // Driver Code
 int main() {
