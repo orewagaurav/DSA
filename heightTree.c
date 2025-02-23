@@ -26,8 +26,6 @@ int height(struct TreeNode* root){
         return rightH+1;
 }
 
-
-// Driver Code
 int main() {
     struct TreeNode* root = newNode(1);
     root->left = newNode(2);
@@ -35,6 +33,6 @@ int main() {
     root->left->left = newNode(4);
     root->left->right = newNode(5);
 
-    printf("Height of the tree: %d\n", height(root)); // Output: 2 (if height in edges)
+    printf("Height of the tree: %d\n", height(root));
     return 0;
 }
