@@ -32,7 +32,6 @@ int main(){
         printf("Memory allocation failed\n");
         return 1;
     }
-
     initGraph(root,5);
 
     addEdge(root,0,1);
